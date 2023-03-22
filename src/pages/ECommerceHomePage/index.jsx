@@ -57,7 +57,7 @@ const ECommerceHomePagePage = () => {
             p247CustomerservOne="24/7 CUSTOMER SERVICE"
             friendly247CustOne="Friendly 24/7 customer support"
             moneybackguaranOne="MONEY BACK GUARANTEE"
-            duration="We reurn money within 30 days"
+            duration="We return money within 30 days"
           />
           <Button className="bg-gray_100 flex h-[46px] items-center justify-center mt-[61px] p-[11px] rotate-[90deg] rounded-[50%] w-[46px]">
             <Img
