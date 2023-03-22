@@ -26,6 +26,8 @@ import ECommerceHomePageCart9 from "components/ECommerceHomePageCart9";
 import ECommerceHomePageCart10 from "components/ECommerceHomePageCart10";
 import ECommerceHomePageListcut from "components/ECommerceHomePageListcut";
 import ECommerceHomePageFooter from "components/ECommerceHomePageFooter";
+import SideBar from "components/SideBar"
+import Hero from "components/Hero"
 
 const ECommerceHomePagePage = () => {
   return (
@@ -51,141 +53,23 @@ const ECommerceHomePagePage = () => {
             alt="lineThree"
           />
           <div className="flex md:flex-col flex-row font-poppins md:gap-[20px] items-start justify-start max-w-[1170px] mx-[auto] md:px-[20px] w-[100%]">
-            <div className="flex flex-col gap-[16px] items-start justify-start md:mt-[0] mt-[39px] self-stretch w-[auto]">
-              <div className="flex flex-row gap-[51px] items-start justify-start self-stretch w-[auto]">
-                <Text
-                  className="font-normal not-italic text-black_900 text-center w-[auto]"
-                  variant="body3"
-                >
-                  Woman’s Fashion
-                </Text>
-                <Img
-                  src="images/img_arrowright.svg"
-                  className="h-[24px] w-[24px]"
-                  alt="arrowright"
-                />
-              </div>
-              <div className="flex flex-row gap-[81px] items-start justify-start self-stretch w-[auto]">
-                <Text
-                  className="font-normal not-italic text-black_900 text-center w-[auto]"
-                  variant="body3"
-                >
-                  Men’s Fashion
-                </Text>
-                <Img
-                  src="images/img_arrowright.svg"
-                  className="h-[24px] w-[24px]"
-                  alt="arrowright_One"
-                />
-              </div>
-              <Text
-                className="font-normal not-italic text-black_900 text-center w-[auto]"
-                variant="body3"
-              >
-                Electronics
-              </Text>
-              <Text
-                className="font-normal not-italic text-black_900 text-center w-[auto]"
-                variant="body3"
-              >
-                Home & Lifestyle
-              </Text>
-              <Text
-                className="font-normal not-italic text-black_900 text-center w-[auto]"
-                variant="body3"
-              >
-                Medicine
-              </Text>
-              <Text
-                className="font-normal not-italic text-black_900 text-center w-[auto]"
-                variant="body3"
-              >
-                Sports & Outdoor
-              </Text>
-              <Text
-                className="font-normal not-italic text-black_900 text-center w-[auto]"
-                variant="body3"
-              >
-                Baby’s & Toys
-              </Text>
-              <Text
-                className="font-normal not-italic text-black_900 text-center w-[auto]"
-                variant="body3"
-              >
-                Groceries & Pets
-              </Text>
-              <Text
-                className="font-normal not-italic text-black_900 text-center w-[auto]"
-                variant="body3"
-              >
-                Health & Beauty
-              </Text>
-            </div>
+            <SideBar />
             <Line className="bg-black_900_75 md:h-[1px] h-[384px] mb-[2px] md:ml-[0] ml-[16px] md:w-[100%] w-[1px]" />
-            <div className="bg-black_900 md:h-[330px] h-[344px] mb-[2px] md:ml-[0] ml-[44px] md:mt-[0] mt-[40px] pl-[16px] pt-[16px] relative md:w-[100%] w-[77%]">
-              <Img
-                src="images/img_heroendframe.png"
-                className="absolute bottom-[0] h-[328px] object-cover right-[0] w-[56%]"
-                alt="heroendframe"
-              />
-              <div className="absolute flex flex-col h-[max-content] inset-y-[0] items-start justify-start left-[7%] my-[auto] w-[33%]">
-                <div className="flex flex-row font-poppins gap-[24px] items-center justify-start self-stretch w-[auto]">
-                  <Img
-                    src="images/img_1200pxapplegraylogo.png"
-                    className="h-[49px] md:h-[auto] object-cover w-[40px]"
-                    alt="1200pxapplegray"
-                  />
-                  <Text
-                    className="font-normal not-italic text-center text-gray_50 w-[auto]"
-                    variant="body3"
-                  >
-                    iPhone 14 Series
-                  </Text>
-                </div>
-                <Text
-                  className="font-inter font-semibold leading-[60.00px] mt-[20px] text-gray_50 text-left tracking-[1.92px] w-[100%]"
-                  as="h3"
-                  variant="h3"
-                >
-                  Up to 10% off Voucher
-                </Text>
-                <div className="flex flex-row font-poppins gap-[8px] items-center justify-start md:ml-[0] ml-[3px] mt-[22px] self-stretch w-[auto]">
-                  <div className="flex flex-col gap-[4px] items-start justify-start self-stretch w-[auto]">
-                    <Text
-                      className="font-medium text-center text-gray_50 w-[auto]"
-                      variant="body3"
-                    >
-                      Shop Now
-                    </Text>
-                    <Line className="bg-gray_50 h-[1px] w-[100%]" />
-                  </div>
-                  <Img
-                    src="images/img_arrowright_gray_50.svg"
-                    className="h-[24px] w-[24px]"
-                    alt="arrowright_Two"
-                  />
-                </div>
-              </div>
-              <Img
-                src="images/img_frame883.svg"
-                className="absolute bottom-[3%] h-[14px] left-[40%] w-[110px]"
-                alt="frame883"
-              />
-            </div>
+            <Hero />
           </div>
-          <div className="flex flex-col font-poppins gap-[40px] items-start justify-start mt-[137px] md:px-[20px] self-stretch md:w-[100%] w-[auto]">
-            <div className="flex md:flex-col flex-row md:gap-[40px] gap-[470px] items-end justify-between self-stretch md:w-[100%] w-[auto]">
-              <div className="flex sm:flex-col flex-row sm:gap-[40px] gap-[87px] items-end justify-start self-stretch md:w-[100%] w-[auto]">
-                <div className="flex flex-col gap-[24px] h-[109px] md:h-[auto] items-start justify-start self-stretch w-[auto]">
-                  <div className="flex flex-row font-poppins gap-[16px] items-center justify-start self-stretch w-[auto]">
-                    <div className="bg-red_600 h-[40px] rounded-[4px] w-[20%]"></div>
-                    <Text
-                      className="font-semibold text-left text-red_600 w-[auto]"
-                      variant="body3"
-                    >
-                      Today’s
-                    </Text>
-                  </div>
+          <div className="flex flex-col font-poppins gap-[40px] max-w-[1170px] mt-[137px] md:px-[20px] self-stretch md:w-[100%] mx-auto">
+            <div className="flex flex-col md:h-[auto] items-start justify-start">
+              <div className="flex flex-row font-poppins gap-[16px] items-start justify-start">
+                <div className="bg-red_600 h-[40px] rounded-[4px] w-[20%] min-w-[30px]"></div>
+                <Text
+                  className="font-semibold text-left text-red_600"
+                  variant="body3"
+                >
+                  Today’s
+                </Text>
+              </div>
+              <div className="flex flex-row items-center justify-between self-stretch">
+                <div>
                   <Text
                     className="font-inter font-semibold text-black_900 text-left tracking-[1.44px] w-[auto]"
                     as="h4"
@@ -194,37 +78,39 @@ const ECommerceHomePagePage = () => {
                     Flash Sales
                   </Text>
                 </div>
-                <ECommerceHomePageRowdays
-                  className="flex flex-row items-start justify-between sm:w-[100%] w-[51%]"
-                  days="Days"
-                  three="03"
-                  hours="Hours"
-                  twentythree="23"
-                  minutes="Minutes"
-                  nineteen="19"
-                  seconds="Seconds"
-                  fiftysix="56"
-                />
-              </div>
-              <div className="flex flex-row gap-[8px] items-start justify-start self-stretch w-[auto]">
-                <Button className="bg-gray_100 flex h-[46px] items-center justify-center p-[11px] rounded-[50%] w-[46px]">
-                  <Img
-                    src="images/img_arrowleft_black_900.svg"
-                    className="h-[24px]"
-                    alt="arrowleft"
+                <div>
+                  <ECommerceHomePageRowdays
+                    className="flex flex-row items-center justify-between sm:w-[100%] w-[51%]"
+                    days="Days"
+                    three="03"
+                    hours="Hours"
+                    twentythree="23"
+                    minutes="Minutes"
+                    nineteen="19"
+                    seconds="Seconds"
+                    fiftysix="56"
                   />
-                </Button>
-                <Button className="bg-gray_100 flex h-[46px] items-center justify-center p-[11px] rounded-[50%] w-[46px]">
-                  <Img
-                    src="images/img_arrowright_black_900.svg"
-                    className="h-[24px]"
-                    alt="arrowright_Three"
-                  />
-                </Button>
+                </div>
+                <div className="flex flex-row gap-[8px] items-start justify-start self-stretch w-[auto]">
+                  <Button className="bg-gray_100 flex h-[46px] items-center justify-center p-[11px] rounded-[50%] w-[46px]">
+                    <Img
+                      src="images/img_arrowleft_black_900.svg"
+                      className="h-[24px]"
+                      alt="arrowleft"
+                    />
+                  </Button>
+                  <Button className="bg-gray_100 flex h-[46px] items-center justify-center p-[11px] rounded-[50%] w-[46px]">
+                    <Img
+                      src="images/img_arrowright_black_900.svg"
+                      className="h-[24px]"
+                      alt="arrowright_Three"
+                    />
+                  </Button>
+                </div>
               </div>
             </div>
             <List
-              className="sm:flex-col flex-row gap-[30px] grid sm:grid-cols-1 md:grid-cols-3 grid-cols-6 justify-start max-w-[1770px] w-[100%]"
+              className="sm:flex-col flex-row gap-[30px] grid sm:grid-cols-1 md:grid-cols-3 grid-cols-4 items-center justify-between max-w-[1770px] w-[100%]"
               orientation="horizontal"
             >
               <ECommerceHomePageColumn
@@ -249,22 +135,6 @@ const ECommerceHomePagePage = () => {
                 _30="-30%"
                 ipslcdgamingmonOne="IPS LCD Gaming Monitor"
                 price="$370"
-                oldprice="$400"
-                ninetynine="(99)"
-              />
-              <ECommerceHomePageColumn2
-                className="flex sm:flex-1 flex-col items-start justify-start self-stretch sm:w-[100%] w-[auto]"
-                _25="-25%"
-                language="S-Series Comfort Chair "
-                price="$375"
-                oldprice="$400"
-                ninetynine="(99)"
-              />
-              <ECommerceHomePageColumn2
-                className="flex sm:flex-1 flex-col items-start justify-start self-stretch sm:w-[100%] w-[auto]"
-                _25="-25%"
-                language="S-Series Comfort Chair "
-                price="$375"
                 oldprice="$400"
                 ninetynine="(99)"
               />
