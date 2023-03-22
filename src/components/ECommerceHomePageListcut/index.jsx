@@ -28,7 +28,7 @@ const ECommerceHomePageListcut = (props) => {
             </Text>
           </div>
         </div>
-        <div className="flex flex-col gap-[24px] items-center justify-start w-[262px]">
+        <div className="flex flex-col gap-[24px] items-center justify-start w-[auto]">
           <div
             className="bg-cover bg-no-repeat flex h-[80px] items-center justify-start p-[20px] w-[80px]"
             style={{ backgroundImage: "url('images/img_services.svg')" }}
