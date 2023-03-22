@@ -17,7 +17,7 @@ const ECommerceHomePageFooter = (props) => {
                       as="h6"
                       variant="h6"
                     >
-                      Exclusive
+                      ShopHaven
                     </Text>
                   </div>
                   <Text
@@ -61,7 +61,7 @@ const ECommerceHomePageFooter = (props) => {
                     className="cursor-pointer font-normal font-poppins leading-[24.00px] not-italic text-gray_50 text-left"
                     variant="body3"
                   >
-                    111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.
+                    19207 JKIA, Nairobi.
                   </Text>
                 </li>
                 <li className="w-[auto]">
@@ -69,7 +69,7 @@ const ECommerceHomePageFooter = (props) => {
                     className="cursor-pointer font-normal font-poppins not-italic text-[16px] text-gray_50 text-left"
                     href="javascript:"
                   >
-                    exclusive@gmail.com
+                    odhiambo.edward111@gmail.com
                   </a>
                 </li>
                 <li className="w-[auto]">
@@ -77,7 +77,7 @@ const ECommerceHomePageFooter = (props) => {
                     className="cursor-pointer font-normal font-poppins not-italic text-[16px] text-gray_50 text-left"
                     href="javascript:"
                   >
-                    +88015-88888-9999
+                    +254-728-888-999
                   </a>
                 </li>
               </ul>
@@ -281,7 +281,8 @@ const ECommerceHomePageFooter = (props) => {
                   className="font-normal font-poppins not-italic text-left text-white_A700 w-[auto]"
                   variant="body3"
                 >
-                  Copyright Rimel 2022. All right reserved
+                  Copyright <a href="https://edwardodhiambo.com/">Edward</a>{" "}
+                  2023. All right reserved
                 </Text>
               </div>
             </div>
