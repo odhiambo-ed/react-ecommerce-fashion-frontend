@@ -20,7 +20,40 @@ const SignUpPage = () => {
   const [secondName, setSecondName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [error, setError] = useState(null)
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [formErrors, setFormErrors] = useState([])
+
+  const hundleSignUp = (event) => {
+    event.preventDefault();
+
+    setFormErrors([]);
+
+    const errors = [];
+    if (firstName.trim() === "") {
+      errors.push("**First name is required**")
+    }
+    if (secondName.trim() === "") {
+      errors.push("**Second name is required**")
+    }
+    if (email.trim() === "") {
+      errors.push("**Email is required**")
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.push("**Email is invalid**")
+    }
+    if (password.trim() === "") {
+      errors.push("**Password is required**")
+    }
+    if (password !== confirmPassword) {
+      errors.push("**Password does not match**")
+    }
+
+    setFormErrors(errors);
+    setTimeout(() => {
+      setFormErrors([])
+    }, 3000)
+
+  }
 
   return (
     <>
@@ -69,9 +102,12 @@ const SignUpPage = () => {
                 Enter your details below
               </Text>
             </div>
-            <div className="flex flex-col gap-[40px] items-center justify-start self-stretch sm:w-[100%] w-[auto]">
+            <form
+              onSubmit={hundleSignUp}
+              className="flex flex-col gap-[40px] items-center justify-start self-stretch sm:w-[100%] w-[auto]"
+            >
               <div className="flex flex-col gap-[40px] items-start justify-start self-stretch w-[auto]">
-                <form className="flex flex-col gap-[8px] items-start justify-start self-stretch w-[auto]">
+                <div className="flex flex-col gap-[8px] items-start justify-start self-stretch w-[auto]">
                   <label htmlFor="">First Name</label>
                   <input
                     type="text"
@@ -103,12 +139,23 @@ const SignUpPage = () => {
                   <label htmlFor="">Confirm Password</label>
                   <input
                     type="password"
+                    value={confirmPassword}
+                    onChange={(event) => setConfirmPassword(event.target.value)}
                     className="border-b-2 border-gray-500 border-l-0 border-r-0 border-t-0 focus:outline-none focus:border-blue-500"
                   />
-                </form>
+                </div>
               </div>
+              {
+                formErrors.length > 0 && (
+                  <ul className="text-red-500">
+                    {formErrors.map((error) => (
+                      <li key={error}>{error}</li>
+                    ))}
+                  </ul>
+                )
+              }
               <div className="flex flex-col gap-[16px] items-start justify-start self-stretch sm:w-[100%] w-[auto]">
-                <Button className="bg-red_600 cursor-pointer font-medium sm:min-w-[100%] min-w-[371px] px-[122px] sm:px-[20px] md:px-[40px] py-[16px] rounded-[4px] text-[16px] text-center text-gray_50 w-[auto]">
+                <Button type="submit" className="bg-red_600 cursor-pointer font-medium sm:min-w-[100%] min-w-[371px] px-[122px] sm:px-[20px] md:px-[40px] py-[16px] rounded-[4px] text-[16px] text-center text-gray_50 w-[auto]">
                   Create Account
                 </Button>
                 <div className="flex flex-col gap-[32px] items-center justify-start self-stretch sm:w-[100%] w-[auto]">
@@ -124,7 +171,7 @@ const SignUpPage = () => {
                     }
                   >
                     <div className="font-normal md:px-[40px] not-italic sm:px-[20px] text-[16px] text-black_900 text-left">
-                       Sign up with Google
+                      Sign up with Google
                     </div>
                   </Button>
                   <div className="flex flex-row gap-[16px] items-center justify-start self-stretch w-[auto]">
@@ -151,7 +198,7 @@ const SignUpPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
         <div className="flex items-center mt-[140px] w-[100%]">
