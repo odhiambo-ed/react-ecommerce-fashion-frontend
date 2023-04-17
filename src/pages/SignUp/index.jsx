@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import ECommerceHomePageTopheader from "components/ECommerceHomePageTopheader";
 import ECommerceHomePageHeader from "components/ECommerceHomePageHeader";
@@ -15,6 +15,12 @@ const SignUpPage = () => {
       alert("Login successfull. 😍");
     },
   });
+
+  const [firstName, setFirstName] = useState("")
+  const [secondName, setSecondName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState(null)
 
   return (
     <>
@@ -65,45 +71,41 @@ const SignUpPage = () => {
             </div>
             <div className="flex flex-col gap-[40px] items-center justify-start self-stretch sm:w-[100%] w-[auto]">
               <div className="flex flex-col gap-[40px] items-start justify-start self-stretch w-[auto]">
-                <div className="flex flex-col gap-[8px] items-start justify-start self-stretch w-[auto]">
-                  <Text
-                    className="font-normal not-italic text-black_900_7e text-left w-[auto]"
-                    variant="body3"
-                  >
-                    Name
-                  </Text>
-                  <Img
-                    src="images/img_underline.svg"
-                    className="h-[1px] w-[370px]"
-                    alt="underline_One"
+                <form className="flex flex-col gap-[8px] items-start justify-start self-stretch w-[auto]">
+                  <label htmlFor="">First Name</label>
+                  <input
+                    type="text"
+                    value={firstName}
+                    onChange={(event) => setFirstName(event.target.value)}
+                    className="border-b-2 border-gray-500 border-l-0 border-r-0 border-t-0 focus:outline-none focus:border-blue-500"
                   />
-                </div>
-                <div className="flex flex-col gap-[8px] items-start justify-start self-stretch w-[auto]">
-                  <Text
-                    className="font-normal not-italic text-black_900_7e text-left w-[auto]"
-                    variant="body3"
-                  >
-                    Email or Phone Number
-                  </Text>
-                  <Img
-                    src="images/img_underline.svg"
-                    className="h-[1px] w-[370px]"
-                    alt="underline_Two"
+                  <label htmlFor="">Second Name</label>
+                  <input
+                    type="text"
+                    value={secondName}
+                    onChange={(event) => setSecondName(event.target.value)}
+                    className="border-b-2 border-gray-500 border-l-0 border-r-0 border-t-0 focus:outline-none focus:border-blue-500"
                   />
-                </div>
-                <div className="flex flex-col gap-[8px] items-start justify-start self-stretch w-[auto]">
-                  <Text
-                    className="font-normal not-italic text-black_900_7e text-left w-[auto]"
-                    variant="body3"
-                  >
-                    Password
-                  </Text>
-                  <Img
-                    src="images/img_underline.svg"
-                    className="h-[1px] w-[370px]"
-                    alt="underline_Three"
+                  <label htmlFor="">Email</label>
+                  <input
+                    type="text"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    className="border-b-2 border-gray-500 border-l-0 border-r-0 border-t-0 focus:outline-none focus:border-blue-500"
                   />
-                </div>
+                  <label htmlFor="">Password</label>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                    className="border-b-2 border-gray-500 border-l-0 border-r-0 border-t-0 focus:outline-none focus:border-blue-500"
+                  />
+                  <label htmlFor="">Confirm Password</label>
+                  <input
+                    type="password"
+                    className="border-b-2 border-gray-500 border-l-0 border-r-0 border-t-0 focus:outline-none focus:border-blue-500"
+                  />
+                </form>
               </div>
               <div className="flex flex-col gap-[16px] items-start justify-start self-stretch sm:w-[100%] w-[auto]">
                 <Button className="bg-red_600 cursor-pointer font-medium sm:min-w-[100%] min-w-[371px] px-[122px] sm:px-[20px] md:px-[40px] py-[16px] rounded-[4px] text-[16px] text-center text-gray_50 w-[auto]">
@@ -116,13 +118,13 @@ const SignUpPage = () => {
                     leftIcon={
                       <Img
                         src="images/img_google.svg"
-                        className="mb-[2px] mr-[16px]"
+                        className=""
                         alt="google"
                       />
                     }
                   >
                     <div className="font-normal md:px-[40px] not-italic sm:px-[20px] text-[16px] text-black_900 text-left">
-                      Sign up with Google
+                       Sign up with Google
                     </div>
                   </Button>
                   <div className="flex flex-row gap-[16px] items-center justify-start self-stretch w-[auto]">
