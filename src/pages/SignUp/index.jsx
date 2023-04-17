@@ -28,31 +28,65 @@ const SignUpPage = () => {
 
     setFormErrors([]);
 
+    // Perform Form Validation
     const errors = [];
     if (firstName.trim() === "") {
-      errors.push("**First name is required**")
+      errors.push("**First name is required**");
     }
     if (secondName.trim() === "") {
-      errors.push("**Second name is required**")
+      errors.push("**Second name is required**");
     }
     if (email.trim() === "") {
-      errors.push("**Email is required**")
+      errors.push("**Email is required**");
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errors.push("**Email is invalid**")
+      errors.push("**Email is invalid**");
     }
     if (password.trim() === "") {
-      errors.push("**Password is required**")
+      errors.push("**Password is required**");
     }
     if (password !== confirmPassword) {
-      errors.push("**Password does not match**")
+      errors.push("**Password does not match**");
     }
 
+    // Set the form errors and clear them after 5 seconds
     setFormErrors(errors);
     setTimeout(() => {
-      setFormErrors([])
-    }, 3000)
+      setFormErrors([]);
+    }, 5000);
 
+    // Send the form data to the backend service for processing if there are no validation errors
+    if (errors.length === 0) {
+      const url = "http://localhost:3000/api/v1/signup";
+      const data = {
+        first_name: "firstName",
+        second_name: "secondName",
+        email: "email",
+        password: "password"
+      };
+
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          // Reset the form fields
+          setFirstName("");
+          setSecondName("");
+          setEmail("");
+          setPassword("");
+          setConfirmPassword("");
+          // Redirect the user to the dashboard page on successful sign-up
+          window.location.href = "/account";
+        }).catch((error) => {
+          console.error("Error:", error);
+        })
+    }
   }
 
   return (
