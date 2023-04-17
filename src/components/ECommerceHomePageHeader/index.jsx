@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Text, Img, List } from "components";
+import { Link } from "react-router-dom";
 
 const ECommerceHomePageHeader = (props) => {
   return (
@@ -49,12 +50,12 @@ const ECommerceHomePageHeader = (props) => {
             </div>
             <div className="flex items-center justify-start pt-[2px] w-[auto]">
               {!!props?.signup ? (
-                <Text
+                <Link to="/signup"
                   className="font-normal font-poppins not-italic text-black_900 text-center w-[auto]"
                   variant="body3"
                 >
                   {props?.signup}
-                </Text>
+                </Link>
               ) : null}
             </div>
           </div>
