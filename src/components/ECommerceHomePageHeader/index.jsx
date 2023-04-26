@@ -20,32 +20,32 @@ const ECommerceHomePageHeader = (props) => {
           <div className="flex flex-row gap-[48px] items-start justify-start self-stretch w-[auto]">
             <div className="flex items-center justify-start w-[auto]">
               {!!props?.home ? (
-                <Text
+                <Link to="/"
                   className="font-normal font-poppins not-italic text-black_900 text-center w-[auto]"
                   variant="body3"
                 >
                   {props?.home}
-                </Text>
+                </Link>
               ) : null}
             </div>
             <div className="flex items-center justify-start w-[auto]">
               {!!props?.contact ? (
-                <Text
+                <Link to="/contact"
                   className="font-normal font-poppins not-italic text-black_900 text-center w-[auto]"
                   variant="body3"
                 >
                   {props?.contact}
-                </Text>
+                </Link>
               ) : null}
             </div>
             <div className="flex items-center justify-start w-[auto]">
               {!!props?.about ? (
-                <Text
+                <Link to="/about"
                   className="font-normal font-poppins not-italic text-black_900 text-center w-[auto]"
                   variant="body3"
                 >
                   {props?.about}
-                </Text>
+                </Link>
               ) : null}
             </div>
             <div className="flex items-center justify-start pt-[2px] w-[auto]">
