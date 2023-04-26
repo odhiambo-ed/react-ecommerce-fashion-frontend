@@ -6,7 +6,7 @@ import { Img, Text, Line, Button, List } from "components";
 import ECommerceHomePageListcut from "components/ECommerceHomePageListcut";
 import ECommerceHomePageFooter from "components/ECommerceHomePageFooter";
 import SideBar from "components/SideBar"
-import Hero from "components/Hero"
+import Hero from "components/Hero/Index"
 import FlashsalesSection from "components/FlashsalesSection"
 import CategoriesSection from "components/CategoriesSection"
 import BestsellingSection from "components/BestsellingSection"

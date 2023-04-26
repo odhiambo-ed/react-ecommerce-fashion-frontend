@@ -1,11 +1,74 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import ECommerceHomePageTopheader from "components/ECommerceHomePageTopheader";
 import ECommerceHomePageHeader from "components/ECommerceHomePageHeader";
 import { Img, Text, Button } from "components";
 import ECommerceHomePageFooter from "components/ECommerceHomePageFooter";
+import { Link } from "react-router-dom"
 
 const LogInPage = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [formErrors, setFormErrors] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const errors = [];
+    setFormErrors([]);
+    // Form validaton
+    if (email.trim() === "") {
+      errors.push("**Email is required**")
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.push("**Email is invalid**")
+    }
+    if (password.trim() === "") {
+      errors.push("**Password is required**")
+    }
+    setFormErrors(errors)
+
+    // Fetches the password and email
+    if (formErrors.length > 0) {
+      const url = "http://localhost:3000/api/v1/login";
+      const userData = {
+        email: email,
+        password: password
+      }
+
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            throw new Error("Invalid email or password");
+          }
+        })
+        .then((userData) => {
+          console.log(userData);
+          setEmail("");
+          setPassword("");
+        })
+        .catch((error) => {
+          setFormErrors([error.message]);
+        })
+    }
+  }
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      window.location.href = "/account";
+    }
+  }, [isLoggedIn])
+
   return (
     <>
       <div className="bg-white_A700 flex flex-col font-poppins items-start justify-start mx-[auto] w-[100%]">
@@ -30,15 +93,18 @@ const LogInPage = () => {
             alt="lineThree"
           />
         </div>
-        <div className="flex md:flex-col flex-row gap-[129px] md:gap-[40px] items-center justify-between max-w-[1305px] mt-[60px] mx-[auto] md:px-[20px] self-stretch w-[100%]">
-          <div className="bg-bluegray_100 flex md:flex-1 items-center justify-end pt-[75px] rounded-bl-[0] rounded-br-[4px] rounded-tl-[0] rounded-tr-[4px] md:w-[100%] w-[62%]">
+        <form
+          onSubmit={handleLogin}
+          className="flex md:flex-col flex-row gap-[129px] md:gap-[40px] items-center justify-between max-w-[1305px] mt-[60px] mx-[auto] md:px-[20px] self-stretch w-[100%]"
+        >
+          <div className="bg-bluegray_100 flex md:flex-1 items-center justify-end pt-[75px] rounded-bl-[0] rounded-br-[4px] rounded-tl-[0] rounded-tr-[4px] md:w-[100%] w-[50%]">
             <Img
               src="images/img_dlbeatsnoop1.png"
-              className="h-[706px] md:h-[auto] object-cover rounded-tr-[4px] w-[100%]"
+              className="md:h-[auto] object-cover rounded-tr-[4px] w-[100%]"
               alt="dlbeatsnoopOne"
             />
           </div>
-          <div className="flex sm:flex-1 flex-col gap-[40px] items-start justify-start self-stretch sm:w-[100%] w-[auto]">
+          <div className="flex sm:flex-1 flex-col gap-[40px] items-start justify-start self-stretch sm:w-[100%] w-[50%]">
             <div className="flex flex-col gap-[48px] items-start justify-start self-stretch w-[auto]">
               <div className="flex flex-col gap-[24px] items-start justify-start self-stretch w-[auto]">
                 <Text
@@ -46,7 +112,7 @@ const LogInPage = () => {
                   as="h4"
                   variant="h4"
                 >
-                  Log in to Exclusive
+                  Log in and Shop
                 </Text>
                 <Text
                   className="font-normal font-poppins not-italic text-black_900 text-left w-[auto]"
@@ -57,48 +123,51 @@ const LogInPage = () => {
               </div>
               <div className="flex flex-col gap-[40px] items-start justify-start self-stretch w-[auto]">
                 <div className="flex flex-col gap-[8px] items-start justify-start self-stretch w-[auto]">
-                  <Text
-                    className="font-normal not-italic text-black_900_7e text-left w-[auto]"
-                    variant="body3"
-                  >
-                    Email or Phone Number
-                  </Text>
-                  <Img
-                    src="images/img_underline.svg"
-                    className="h-[1px] w-[370px]"
-                    alt="underline"
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="border-b-2 border-gray-500 border-l-0 border-r-0 border-t-0 focus:outline-none focus:border-blue-500"
                   />
                 </div>
                 <div className="flex flex-col gap-[8px] items-start justify-start self-stretch w-[auto]">
-                  <Text
-                    className="font-normal not-italic text-black_900_7e text-left w-[auto]"
-                    variant="body3"
-                  >
-                    Password
-                  </Text>
-                  <Img
-                    src="images/img_underline.svg"
-                    className="h-[1px] w-[370px]"
-                    alt="underline_One"
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="border-b-2 border-gray-500 border-l-0 border-r-0 border-t-0 focus:outline-none focus:border-blue-500"
                   />
                 </div>
               </div>
+              {formErrors.length > 0 && (
+                <ul className="text-red-500">
+                  {formErrors.map((error) => (
+                    <li key={error}>{error}</li>
+                  ))}
+                </ul>
+              )}
             </div>
             <div className="flex flex-row gap-[87px] items-center justify-start self-stretch sm:w-[100%] w-[auto]">
               <div className="flex items-start justify-start self-stretch w-[auto]">
-                <Button className="bg-red_600 cursor-pointer font-medium min-w-[143px] sm:px-[20px] md:px-[40px] px-[48px] py-[16px] rounded-[4px] text-[16px] text-center text-gray_50 w-[auto]">
+                <Button
+                  type="submit"
+                  className="bg-red_600 cursor-pointer font-medium min-w-[143px] sm:px-[20px] md:px-[40px] px-[48px] py-[16px] rounded-[4px] text-[16px] text-center text-gray_50 w-[auto]"
+                >
                   Log In
                 </Button>
               </div>
-              <Text
+              <Link
+                to="/signup"
                 className="font-normal not-italic text-left text-red_600 w-[auto]"
                 variant="body3"
               >
                 Forget Password?
-              </Text>
+              </Link>
             </div>
           </div>
-        </div>
+        </form>
         <div className="flex items-center mt-[140px] w-[100%]">
           <ECommerceHomePageFooter className="bg-black_900 flex items-center justify-center md:px-[20px] w-[100%]" />
         </div>
