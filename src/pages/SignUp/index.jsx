@@ -4,7 +4,7 @@ import ECommerceHomePageTopheader from "components/ECommerceHomePageTopheader";
 import ECommerceHomePageHeader from "components/ECommerceHomePageHeader";
 import { Img, Text, Button } from "components";
 import ECommerceHomePageFooter from "components/ECommerceHomePageFooter";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 
 const SignUpPage = () => {
@@ -204,7 +204,7 @@ const SignUpPage = () => {
                       />
                     }
                   >
-                    <div className="font-normal md:px-[40px] not-italic sm:px-[20px] text-[16px] text-black_900 text-left">
+                    <div className="font-normal px-1 md:px-[40px] not-italic sm:px-[20px] text-[16px] text-black_900 text-left">
                       Sign up with Google
                     </div>
                   </Button>
