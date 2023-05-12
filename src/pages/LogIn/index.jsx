@@ -31,7 +31,7 @@ const LogInPage = () => {
     setFormErrors(errors)
 
     // Fetches the password and email
-    if (formErrors.length > 0) {
+    if (formErrors.length === 0) {
       const url = "https://api.edwardodhiambo.com/auth/login";
       const userData = {
         email: email,
