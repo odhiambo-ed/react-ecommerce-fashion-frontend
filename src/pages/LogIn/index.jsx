@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import ECommerceHomePageTopheader from "components/ECommerceHomePageTopheader";
 import ECommerceHomePageHeader from "components/ECommerceHomePageHeader";
@@ -11,7 +12,6 @@ const LogInPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [formErrors, setFormErrors] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -32,42 +32,22 @@ const LogInPage = () => {
 
     // Fetches the password and email
     if (formErrors.length > 0) {
-      const url = "http://localhost:3000/api/v1/login";
+      const url = "https://api.edwardodhiambo.com/auth/login";
       const userData = {
         email: email,
         password: password
       }
-
-      fetch(url, {
-        method: "POST",
+      
+      axios.post(url, userData, {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(userData),
+      }).then((res) => {
+        localStorage.setItem("token", JSON.stringify(res.data));
+        window.location.href = "/";
       })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          } else {
-            throw new Error("Invalid email or password");
-          }
-        })
-        .then((userData) => {
-          console.log(userData);
-          setEmail("");
-          setPassword("");
-        })
-        .catch((error) => {
-          setFormErrors([error.message]);
-        })
     }
   }
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      window.location.href = "/account";
-    }
-  }, [isLoggedIn])
 
   return (
     <>
