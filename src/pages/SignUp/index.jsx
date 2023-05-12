@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import ECommerceHomePageTopheader from "components/ECommerceHomePageTopheader";
 import ECommerceHomePageHeader from "components/ECommerceHomePageHeader";
@@ -16,20 +17,22 @@ const SignUpPage = () => {
     },
   });
 
-  const [firstName, setFirstName] = useState("")
-  const [secondName, setSecondName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [formErrors, setFormErrors] = useState([])
+  const [firstName, setFirstName] = useState("");
+  const [secondName, setSecondName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [formErrors, setFormErrors] = useState([]);
 
-  const hundleSignUp = (event) => {
-    event.preventDefault();
+  const hundleSignUp = (e) => {
+    e.preventDefault();
 
+    // Form Validation
+    const errors = [];
+    
     setFormErrors([]);
 
     // Perform Form Validation
-    const errors = [];
     if (firstName.trim() === "") {
       errors.push("**First name is required**");
     }
@@ -45,7 +48,7 @@ const SignUpPage = () => {
     if (password.trim() === "") {
       errors.push("**Password is required**");
     }
-    if (password !== confirmPassword) {
+    if (password!== confirmPassword) {
       errors.push("**Password does not match**");
     }
 
@@ -57,36 +60,25 @@ const SignUpPage = () => {
 
     // Send the form data to the backend service for processing if there are no validation errors
     if (errors.length === 0) {
-      const url = "http://localhost:3000/api/v1/signup";
+      const url = "https://api.edwardodhiambo.com/auth/register";
       const data = {
-        first_name: "firstName",
-        second_name: "secondName",
-        email: "email",
-        password: "password"
+        firstName,
+        secondName,
+        email,
+        password
       };
 
-      fetch(url, {
-        method: "POST",
+      axios.post(url, data, {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+      }).then((res) => {
+        localStorage.setItem("token", JSON.stringify(res.data));
+        window.location.href = "/account";
       })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          // Reset the form fields
-          setFirstName("");
-          setSecondName("");
-          setEmail("");
-          setPassword("");
-          setConfirmPassword("");
-          // Redirect the user to the dashboard page on successful sign-up
-          window.location.href = "/account";
-        }).catch((error) => {
-          console.error("Error:", error);
-        })
     }
+
+  
   }
 
   return (
@@ -182,8 +174,8 @@ const SignUpPage = () => {
               {
                 formErrors.length > 0 && (
                   <ul className="text-red-500">
-                    {formErrors.map((error) => (
-                      <li key={error}>{error}</li>
+                    {formErrors.map((error, index) => (
+                      <li key={index}>{error}</li>
                     ))}
                   </ul>
                 )
